@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Data</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1 style="font-size:60px">Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Latest Mars News</h2>
+      </div>
+    </div>
+    </br>
+    <div class="row">
+      <div class="col-md-12">
+        <h4>{{mars.news_title}}</h4>
+        <p>{{mars.news_p}}</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-8">
+        <h2>Featured Mars Image</h2>
+        </br>
+        <img style="max-width:100%; height:auto;" src="{{mars.featured_image_url}}" alt="Features Mars Image">
+      </div>
+      <br>
+      <div class="col-md-4">
+        <div class="border" style="padding: 10px">
+          <h5>Current Weather on Mars</h5>
+          {{mars.mars_weather}}
+        </div>
+        </br>
+        <div class="border" style="padding: 10px">
+          <h5>Mars Facts</h5>
+          {{mars.fact_table | safe}}
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="col-md-12">
+      <h2 class="text-center">Mars hemispheres</h2>
+    </div>
+  </div>
+  <hr>
+  <!-- <div class="row">
+    {% for hemisphere in mars.hemisphere_images %}
+    <div class="col-6 border">
+      </br>
+      
+      <img style ="max-width:100%; height:auto; padding: 5px" src="{{ hemisphere.image_url}}" alt="mars hemisphere image">
+      <br>
+      <h5 style ="padding: 5px"> {{ hemisphere.title}} </h5>
+    </div>
+    {% endfor %}
+  </div> -->
+
+  <div class="row">
+    {% for hemisphere in mars.hemisphere_images %}
+    <div class="col-md-6 border">
+      </br>
+
+      <img style="max-width:100%; height:auto; padding: 5px; margin: 0 auto" src="{{ hemisphere.image_url}}"
+        alt="mars hemisphere image">
+      <br>
+      <h5 style="padding: 5px"> {{ hemisphere.title}} </h5>
+    </div>
+    {% endfor %}
+  </div>
+
+
+</body>
+
+</html>
